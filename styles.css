@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    padding: 10px; /* Add padding to avoid content touching edges */
+}
+
+.container {
+    background-color: white;
+    padding: 2em; /* Use relative units for better scaling */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Set a max-width to prevent too large containers */
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1.5em;
+    font-size: 1.5em; /* Use relative units */
+}
+
+label {
+    font-size: 0.875em; /* Slightly smaller labels */
+    display: block;
+    margin: 1em 0 0.5em;
+}
+
+input {
+    width: 100%;
+    padding: 0.8em;
+    font-size: 1em;
+    margin-bottom: 1.2em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+
+button {
+    width: 100%;
+    padding: 1em;
+    font-size: 1.1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.result {
+    text-align: center;
+    margin-top: 2em;
+    font-size: 1em; /* Adjust result font size */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5em; /* Adjust padding for smaller screens */
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    label {
+        font-size: 0.85em;
+    }
+
+    input {
+        font-size: 0.95em;
+    }
+
+    button {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1em; /* Less padding on very small screens */
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+
+    label {
+        font-size: 0.75em;
+    }
+
+    input {
+        font-size: 0.9em;
+    }
+
+    button {
+        font-size: 0.95em;
+    }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leverage Profit & Loss Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Leverage Profit & Loss Calculator</h2>
+    <label for="entryPrice">Entry Price (e.g., 49.37):</label>
+    <input type="number" id="entryPrice" placeholder="Enter Entry Price" step="any">
+    
+    <label for="exitPrice">Target Price (e.g., 144):</label>
+    <input type="number" id="exitPrice" placeholder="Enter Exit Price" step="any">
+    
+    <label for="stopLoss">Stop Loss Price (e.g., 45.00):</label>
+    <input type="number" id="stopLoss" placeholder="Enter Stop Loss Price" step="any">
+    
+    <label for="investment">Initial Amount (USDT):</label>
+    <input type="number" id="investment" placeholder="Enter your investment" step="any">
+    
+    <label for="leverage">Leverage (e.g., 5x):</label>
+    <input type="number" id="leverage" placeholder="Enter Leverage" step="any">
+    
+    <button onclick="calculateProfitLoss()">Calculate Profit & Loss</button>
+    
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function calculateProfitLoss() {
+        const entryPrice = parseFloat(document.getElementById("entryPrice").value);
+        const exitPrice = parseFloat(document.getElementById("exitPrice").value);
+        const stopLossPrice = parseFloat(document.getElementById("stopLoss").value);
+        const investment = parseFloat(document.getElementById("investment").value);
+        const leverage = parseFloat(document.getElementById("leverage").value);
+        
+        if (isNaN(entryPrice) || isNaN(exitPrice) || isNaN(stopLossPrice) || isNaN(investment) || isNaN(leverage)) {
+            document.getElementById("result").innerHTML = "Please fill in all fields with valid numbers.";
+            return;
+        }
+
+        // Profit calculation (same as your React logic)
+        const targetPriceChange = ((exitPrice - entryPrice) / entryPrice) * 100;
+        const profitPercentage = targetPriceChange * leverage;
+        const profitAmount = investment * (profitPercentage / 100);
+        const finalProfitAmount = investment + profitAmount;
+
+        // Stop Loss calculation (same as your React logic)
+        const stopLossPriceChange = ((stopLossPrice - entryPrice) / entryPrice) * 100;
+        const lossPercentage = stopLossPriceChange * leverage;
+        const lossAmount = investment * (Math.abs(lossPercentage) / 100);
+        const finalLossAmount = investment - lossAmount;
+
+        // Display results
+        document.getElementById("result").innerHTML = `
+            <h3>Profit Scenario:</h3>
+            <p>Profit Percentage: ${profitPercentage.toFixed(2)}%</p>
+            <p>Profit Amount: $${profitAmount.toFixed(2)}</p>
+            <p>Final Amount: $${finalProfitAmount.toFixed(2)}</p>
+            
+            <h3>Stop Loss Scenario:</h3>
+            <p>Loss Percentage: ${lossPercentage.toFixed(2)}%</p>
+            <p>Loss Amount: -$${lossAmount.toFixed(2)}</p>
+            <p>Final Amount: $${finalLossAmount.toFixed(2)}</p>
+        `;
+    }
+</script>
+
+</body>
+</html>
